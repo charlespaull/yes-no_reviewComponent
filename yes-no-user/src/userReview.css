@@ -1,0 +1,11 @@
+.review-container {
+  border: 2px solid #9f79ee;
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  align-items: center;
+}
+
+span {
+  font-size: 50px;
+}

@@ -1,11 +1,11 @@
 import React from "react";
-import YesNoReview from "./YesNoReview";
+import UserReview from "./UserReview";
 
 class App extends React.Component {
     render() {
         return (
             <div className="app">
-                <YesNoReview />
+                <UserReview />
             </div>
         )
     }
