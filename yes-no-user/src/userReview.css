@@ -4,14 +4,22 @@
   justify-content: center;
   padding: 10px;
   align-items: center;
-  border: 2px solid #9f79ee;
+  border: 1px solid #9f79ee;
+  background-color: #aa8de9;
   width: 55vw;
   height: 35vh;
   margin: 10vh auto;
 }
 
+.review {
+  padding: 10vh 10vh;
+  font-family: sans-serif;
+  font-weight: bold;
+  color: white;
+}
+
 .thumbs-down {
-  text-align: center;
+  
 }
 
 span {
