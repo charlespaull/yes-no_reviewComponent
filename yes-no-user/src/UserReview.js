@@ -11,20 +11,24 @@ class UserReview extends React.Component {
       hoverID: undefined
     };
 
+    // bound methods for hover on/off emoji
+
     this.onHoverEmoji = this.onHoverEmoji.bind(this);
 
     this.offHoverEmoji = this.offHoverEmoji.bind(this);
   }
 
+  // method for when user hovers over emoji
   onHoverEmoji(event) {
     // console.log("hovering over this"); // this triggers
     // changes hoverId state props using this.setState
     this.setState({
-      // id for span element is identified
+      // change state to target the ID within the element in return statement
       hoverID: event.target.id
     });
   }
 
+  // method for when user hovers off emoji
   offHoverEmoji(event) {
     // console.log("mouse off emoji"); // this triggers
     // set states back to default states
@@ -42,16 +46,20 @@ class UserReview extends React.Component {
         </div>
         <div className="cop-emoji">
           <span
+            // ID is unique to this <span> element
             id={"officerIcon"}
             aria-label="jsx-a11y/accessible-emoji"
             role="img"
+            // logic: IF hoverID state is set to ID (from event.target.id) prop, then return CSS properties for "big"; otherwise, small props
             className={this.state.hoverID === "officerIcon" ? "big" : "small"}
+            // eventHandlers for onHover & offHover
             onMouseEnter={event => this.onHoverEmoji(event)}
             onMouseLeave={event => this.offHoverEmoji(event)}
           >
             👮🏼‍
           </span>
         </div>
+        {/* same stuff as above <span>*/}
         <div className="thumbs-down">
           <span
             id={"thumbIcon"}
