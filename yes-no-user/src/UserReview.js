@@ -46,15 +46,15 @@ class UserReview extends React.Component {
   hasUserSubmit(event) {
     event.preventDefault();
     // set variable to capture emoji ID for review count
-    let reviewCount;
+    let review_count;
     // console.log(event.target.id); // id is captured on click
     // user submitted a review - change the state to true
     this.setState({
       // note: only changing to true, not ! because user only needs to submit once.
       hasUserSubmit: true
     });
-    reviewCount = event.target.id;
-    console.log("This is the review " + reviewCount);
+    review_count = event.target.id;
+    // console.log("This is the review " + review_count); //this works
   }
 
   render() {
@@ -64,7 +64,7 @@ class UserReview extends React.Component {
     // null declared variable - will mutate hold condition of {conditional} if user submits, {review} if not.
     let conditional = null;
     // component that shows up when user clicks to submit a review
-    let confirmedSubmit;
+    let confirmed_submit;
 
     // review component before submit
     review = (
@@ -109,7 +109,7 @@ class UserReview extends React.Component {
     );
 
     // confirmed submit component
-    confirmedSubmit = (
+    confirmed_submit = (
       <div className="confirm-container">
         <div className="confirm">Thank you for the feedback!</div>
         <div className="smile-emoji">
@@ -129,7 +129,7 @@ class UserReview extends React.Component {
 
     // logic if user has submitted a review - different actions happen
     if (this.state.hasUserSubmit) {
-      conditional = <div>{confirmedSubmit}</div>;
+      conditional = <div>{confirmed_submit}</div>;
     } else {
       conditional = <div>{review}</div>;
     }
