@@ -69,42 +69,42 @@ class UserReview extends React.Component {
     // review component before submit
     review = (
       <div className="review-container">
-                <div className="review">
-                  Hello! Did you have a positive officer interaction?
-                </div>
-                <div className="cop-emoji">
-                          <span
-                                    // ID is unique to this <span> element
-                                    id={"officerIcon"}
-                                    aria-label="jsx-a11y/accessible-emoji"
-                                    role="img"
-                                    // logic: IF hoverID state is set to ID (from event.target.id) prop, then return CSS properties for "big"; otherwise, small props
-                                    className={this.state.hoverID === "officerIcon" ? "big" : "small"}
-                                    // eventHandlers for onHover & offHover
-                                    onMouseEnter={event => this.onHoverEmoji(event)}
-                                    onMouseLeave={event => this.offHoverEmoji(event)}
-                                    // onSubmit prop to trigger if user clicks on emoji
-                                    onClick={this.hasUserSubmit}
-                          >
-                                    👮🏼‍
-                          </span>
-                </div>
+        <div className="review">
+          Hello! Did you have a positive officer interaction?
+        </div>
+        <div className="cop-emoji">
+          <span
+            // ID is unique to this <span> element
+            id={"officerIcon"}
+            aria-label="jsx-a11y/accessible-emoji"
+            role="img"
+            // logic: IF hoverID state is set to ID (from event.target.id) prop, then return CSS properties for "big"; otherwise, small props
+            className={this.state.hoverID === "officerIcon" ? "big" : "small"}
+            // eventHandlers for onHover & offHover
+            onMouseEnter={event => this.onHoverEmoji(event)}
+            onMouseLeave={event => this.offHoverEmoji(event)}
+            // onSubmit prop to trigger if user clicks on emoji
+            onClick={this.hasUserSubmit}
+          >
+            👮🏼‍
+          </span>
+        </div>
         {/* same stuff as above <span>*/}
-                <div className="thumbs-down">
-                          <span
-                                    // ID is unique to this <span> element
-                                    id={"thumbIcon"}
-                                    aria-label="jsx-a11y/accessible-emoji"
-                                    role="img"
-                                    className={this.state.hoverID === "thumbIcon" ? "big" : "small"}
-                                    onMouseEnter={event => this.onHoverEmoji(event)}
-                                    onMouseLeave={event => this.offHoverEmoji(event)}
-                                    // onSubmit prop to trigger if user clicks on emoji
-                                    onClick={this.hasUserSubmit}
-                          >
-                                    👎🏽
-                          </span>
-                </div>
+        <div className="thumbs-down">
+          <span
+            // ID is unique to this <span> element
+            id={"thumbIcon"}
+            aria-label="jsx-a11y/accessible-emoji"
+            role="img"
+            className={this.state.hoverID === "thumbIcon" ? "big" : "small"}
+            onMouseEnter={event => this.onHoverEmoji(event)}
+            onMouseLeave={event => this.offHoverEmoji(event)}
+            // onSubmit prop to trigger if user clicks on emoji
+            onClick={this.hasUserSubmit}
+          >
+            👎🏽
+          </span>
+        </div>
       </div>
     );
 
@@ -143,6 +143,6 @@ class UserReview extends React.Component {
   }
 }
 
-// Lt's change this and see if it works 
+// Lt's change this and see if it works
 
 export default UserReview;
