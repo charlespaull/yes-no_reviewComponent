@@ -1,17 +1,17 @@
-import React from "react";
+import React, {Component} from "react";
 import "./userReview.css";
 
-class UserReview extends React.Component {
+class UserReview extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       // is the user hovering over the element?
       // if so, trigger CSS class identified by the ID
-      hoverID: undefined,
+      hover_ID: undefined,
       // boolean state if user clicks on an emoji to review
       // default is false
-      hasUserSubmit: false
+      has_User_Submit: false
     };
 
     // bound methods for hover on/off emoji, hasUserSubmit methods
@@ -25,10 +25,10 @@ class UserReview extends React.Component {
   // method for when user hovers over emoji
   onHoverEmoji(event) {
     // console.log("hovering over this"); // this triggers
-    // changes hoverId state props using this.setState
+    // changes hover_ID state props using this.setState
     this.setState({
       // change state to target the ID within the element in return statement
-      hoverID: event.target.id
+      hover_ID: event.target.id
     });
   }
 
@@ -38,27 +38,23 @@ class UserReview extends React.Component {
     // set states back to default states
     this.setState({
       // back to undefined after user moves away from element
-      hoverID: undefined
+      hover_ID: undefined
     });
   }
 
   // method triggers if user submits a review
   hasUserSubmit(event) {
     event.preventDefault();
-    // set variable to capture emoji ID for review count
-    let review_count;
     // console.log(event.target.id); // id is captured on click
     // user submitted a review - change the state to true
     this.setState({
       // note: only changing to true, not ! because user only needs to submit once.
-      hasUserSubmit: true
+      has_User_Submit: true
     });
-    review_count = event.target.id;
-    // console.log("This is the review " + review_count); //this works
   }
 
   render() {
-    // Note: overall logic - if (this.state.hasUserSubmit), return thank you element - otherwise, review Q component should stay on screen until submit
+    // Note: overall logic - if (this.state.has_User_Submit), return thank you element - otherwise, review Q component should stay on screen until submit
 
     let review;
     // null declared variable - will mutate hold condition of {conditional} if user submits, {review} if not.
@@ -78,8 +74,8 @@ class UserReview extends React.Component {
             id={"officerIcon"}
             aria-label="jsx-a11y/accessible-emoji"
             role="img"
-            // logic: IF hoverID state is set to ID (from event.target.id) prop, then return CSS properties for "big"; otherwise, small props
-            className={this.state.hoverID === "officerIcon" ? "big" : "small"}
+            // logic: IF hover_ID state is set to ID (from event.target.id) prop, then return CSS properties for "big"; otherwise, small props
+            className={this.state.hover_ID === "officerIcon" ? "big" : "small"}
             // eventHandlers for onHover & offHover
             onMouseEnter={event => this.onHoverEmoji(event)}
             onMouseLeave={event => this.offHoverEmoji(event)}
@@ -96,7 +92,7 @@ class UserReview extends React.Component {
             id={"thumbIcon"}
             aria-label="jsx-a11y/accessible-emoji"
             role="img"
-            className={this.state.hoverID === "thumbIcon" ? "big" : "small"}
+            className={this.state.hover_ID === "thumbIcon" ? "big" : "small"}
             onMouseEnter={event => this.onHoverEmoji(event)}
             onMouseLeave={event => this.offHoverEmoji(event)}
             // onSubmit prop to trigger if user clicks on emoji
@@ -117,7 +113,7 @@ class UserReview extends React.Component {
             id={"smileIcon"}
             aria-label="jsx-a11y/accessible-emoji"
             role="img"
-            className={this.state.hoverID === "smileIcon" ? "big" : "small"}
+            className={this.state.hover_ID === "smileIcon" ? "big" : "small"}
             onMouseEnter={event => this.onHoverEmoji(event)}
             onMouseLeave={event => this.offHoverEmoji(event)}
           >
@@ -128,21 +124,17 @@ class UserReview extends React.Component {
     );
 
     // logic if user has submitted a review - different actions happen
-    if (this.state.hasUserSubmit) {
-      conditional = <div>{confirmed_submit}</div>;
-    } else {
-      conditional = <div>{review}</div>;
-    }
+    conditional = (
+      <div>{(this.state.has_User_Submit) ? confirmed_submit : review}</div>
+    )
 
     return (
       <div>
-        {/* returns the conditional variable with respective object based on this.state.hasUserSubmit T/F */}
+        {/* returns the conditional variable with respective object based on this.state.has_user_Submit T/F */}
         {conditional}
       </div>
     );
   }
 }
-
-// Lt's change this and see if it works
 
 export default UserReview;
