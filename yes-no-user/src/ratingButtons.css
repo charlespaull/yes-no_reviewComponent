@@ -1,0 +1,32 @@
+.rating-container {
+    display: table; /* this needs to be changed to flex-box styling */ 
+    padding: 10px;  
+    height: 75vh; 
+    margin: 0 auto;  
+}
+
+.rating-title,
+input {
+    display: inline-block;
+    margin: 0 auto;
+}
+
+h3 {
+    align-content: center;
+}
+
+span {
+    font-size: 12px;
+}
+
+.input-button {
+    display: block;
+}
+
+.one-rating {
+    display: inline-block;
+}
+
+.submit-container {
+    padding-top: 10px;
+}

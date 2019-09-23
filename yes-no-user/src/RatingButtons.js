@@ -1,28 +1,10 @@
 import React, {Component} from "react";
-
-class RatingButtons extends Component {
-    constructor(props) {
-        super(props);
-        
-        this.state = {
-            // boolean determines if a rating button is selected - this should be an 
-            is_rating_selected: null,
-            // boolean determines if user submits a rating - default F
-
-            is_rating_submitted: false
-        }
-
-        // bound functions
-    }  
-        
+import "./ratingButtons.css"
 
 
-    // methods
-
-    // render function
-    render() {
-        // array of objects that is rendered (each rating button has an ID match as well)
-        const ratings = [
+// what if you defined it here?
+// ratings array defined globally
+const ratings = [
             {
                 id: 0,
                 rating: "Poor",
@@ -49,23 +31,59 @@ class RatingButtons extends Component {
             }
         ]
 
+class RatingButtons extends Component {
+    constructor(props) {
+        super(props);
+        
+        this.state = {
+            // state to capture user selected rating - default null, will change to value of rating.rating within looped array when clicked
+            is_rating_selected: null,
+            // boolean determines if user submits a rating - default F
+            is_rating_submitted: false,
+            // position of the user click at the moment - default -1 means no position
+            rating_position: -1
+        }
+
+        // bound functions
+        
+        // method when user clicks on a rating button
+        this.onSelectChange = this.onSelectChange.bind(this);
+
+        // submit method
+
+    }  
+    
+    // methods
+    onSelectChange(event) {
+        console.log(event.target.value); // gets review string value from array, works
+        // change of state when clicked
+        this.setState({
+            // button shows up after use click (F --> T)
+            is_rating_selected: event.target.value,
+            // change position based off index
+            // rating_position: 
+        })
+    }
+
+    // render function
+    render() {
         // map over ratings array to get each rating name
         let officer_rating;
         // loop over render
         officer_rating = (
-            <div style={{display: "flex", flexDirection: "col"}}>
-                {ratings.map(rating => (
-                    <div>
-                        <span 
-                            key={rating.id} 
-                            id={rating.id}>
-                                {rating.rating}
-                        </span>
+            <div>
+                {ratings.map((rating) => (
+                    <div className="one-rating">
                         <input 
+                            className="input-button"
                             type="radio" 
-                            value={rating.id} 
-                            checked={this.state.is_rating_selected}>
+                            key={rating.id.toString()} 
+                            checked={this.state.is_rating_selected === rating.rating}
+                            value={rating.rating}
+                            onChange={event => this.onSelectChange(event)}>
                         </input>
+                        <span>
+                        {rating.rating}</span>
                     </div>
                 ))}
             </div>
@@ -74,19 +92,21 @@ class RatingButtons extends Component {
 
         return(
             <div className="rating-container">
-                <div className="rating-title">
-                    <h3>Rate the Police Involved</h3>    
-                </div>
-                <div className="buttons-container">
-                    <span style={{fontSize: "12px"}}>{officer_rating}</span>
-                </div>
+                    <div className="rating-title">
+                        <h3>Rate the Police Involved</h3>    
+                    </div>
+                    <div className="buttons-container">
+                        <div>
+                            {officer_rating}
+                        </div>
+                    </div>
+                    <div className="submit-container">
+                        <button className="button-submit">Submit</button>    
+                    </div>
             </div>
         )
     }
       
 }
-
-
-
 
 export default RatingButtons;
