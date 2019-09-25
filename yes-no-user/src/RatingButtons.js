@@ -12,7 +12,7 @@ const ratings = [
                 id: 1,
                 rating: "Below Average"
             },
-
+ 
             {
                 id: 2,
                 rating: "Average"
@@ -95,12 +95,12 @@ class RatingButtons extends Component {
     render() {
         // map over ratings array to get each rating name
         let officer_rating;
+        // rating component variable holds rating before user submit
+        let rating_component;
         // declare var that holds confirm component after user submit
         let confirmation_submit;
         // conditional to hold logic for submit - default null
         let conditional = null;
-        // rating component variable holds rating before user submit
-        let rating_component;
 
         // map over render
         officer_rating = (
@@ -118,7 +118,7 @@ class RatingButtons extends Component {
                             // from the index parameter - will track the index from the map function
                             onChange={() => this.onSelectChangeIndex(index)}>
                         </input>
-                        <span>
+                        <span className="span-rating">
                             {rating.rating}
                         </span>
                     </div>
@@ -126,27 +126,10 @@ class RatingButtons extends Component {
             </div>
         )
 
-        // confirmed_submit component
-        confirmation_submit = (
-            <div className="confirmation-container">
-                <div className="rating-thankYou">
-                    Thank you for your Rating!
-                </div>
-                <div className="police-emoji">
-                    <span
-                        id={"policeIcon"}
-                        aria-label="jxs-ally/accessible-emoji"
-                        role="img">
-                            👮🏼‍
-                    </span>
-                </div>  
-            </div>
-        )
-
         rating_component = (
             <div className="rating-container">
                 <div className="rating-title">
-                    <h3>Rate the Police Involved</h3>
+                    Rate the Police Involved
                 </div>
                 <div className="buttons-container">
                     <div>
@@ -162,7 +145,27 @@ class RatingButtons extends Component {
                 </div>
             </div>
         )
-        
+
+        // confirmed_submit component
+        confirmation_submit = (
+            // <div className="big-container">
+                <div className="confirmation-container">
+                    <div className="rating-thankYou">
+                        Thank you for your Rating!
+                    </div>
+                    <div className="police-emoji">
+                        <span
+                            className="span-rating"
+                            id={"policeIcon"}
+                            aria-label="jxs-ally/accessible-emoji"
+                            role="img">
+                                👮🏼‍
+                        </span>
+                    </div>  
+                </div>
+            // </div>
+        )
+
         // conditional
         conditional = (
             <div>{(this.state.is_rating_submitted) ? confirmation_submit : rating_component}</div>

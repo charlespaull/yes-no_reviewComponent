@@ -1,32 +1,100 @@
+.one-rating {
+    display: inline-block;
+}
+
+input {
+    margin: 0 auto;
+}
+
+.input-button {
+    height: 15px;
+    width: 15px;
+    background-color: rgb(225, 231, 235);
+    border: 1px solid rgb(200, 212, 221);
+    border-radius: 12px;
+    display: block;
+}
+
+/* this isn't working - want style changed when checked */
+.input-button[type=radio]:checked {
+    height: 15px;
+    width: 15px;
+    background-color: rgb(53, 65, 73);
+    border: 1px solid rgb(53, 65, 73);
+    border-radius: 12px;   
+}
+
+.span-rating {
+    color: #354149;
+    font-size: .8em;
+    font-family: -apple-system,BlinkMacSystemFont,Bookman,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
+}
+
 .rating-container {
-    display: table; /* this needs to be changed to flex-box styling */ 
+    display: flex; /*this isn't how to do this*/
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     padding: 10px;  
     height: 75vh; 
     margin: 0 auto;  
 }
 
-.rating-title,
-input {
-    display: inline-block;
+.rating-title {
     margin: 0 auto;
-}
-
-h3 {
-    align-content: center;
-}
-
-span {
-    font-size: 12px;
-}
-
-.input-button {
-    display: block;
-}
-
-.one-rating {
-    display: inline-block;
+    font-size: 1.2em;
+    color: #354149;
+    font-family: -apple-system,BlinkMacSystemFont,Bookman,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
+    font-weight: 700;
 }
 
 .submit-container {
     padding-top: 10px;
 }
+
+.button-submit {
+    font-family: -apple-system,BlinkMacSystemFont,Bookman,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
+    color: #f5f6f7;
+    background-color: #034488;
+    padding: 3px 25px;
+    border-radius: 5px;
+    border: 0;
+    margin: 0;
+}
+
+.confirmation-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 0; 
+    width: 55vw;
+    height: 10vh;
+    margin: 45vh auto; 
+    border-top: 1px solid #c8d4dd;
+    border-bottom: 1px solid #c8d4dd;   
+}
+
+/* maybe make the height of the above .confirmation-container 75vh and then put on the .rating-thankYou below the border and the height of the actual text around 10vh */
+
+.rating-thankYou {
+    color: #178fd6;
+    /* border-top: 1px solid #c8d4dd; */
+    padding: 5px 0;
+    font-weight: 700;
+    font-family: -apple-system,BlinkMacSystemFont,Bookman,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
+}
+
+.police-emoji {
+    flex-direction: row;
+    align-content: center;
+}
+
+/* trying to use for :checked buttons to style */
+/*
+height: 15px;
+    width: 15px;
+    background-color: rgb(53, 65, 73);
+    border: 1px solid rgb(53, 65, 73);
+    border-radius: 12px;
+*/
