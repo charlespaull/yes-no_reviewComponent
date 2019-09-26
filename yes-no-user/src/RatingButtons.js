@@ -34,28 +34,21 @@ class RatingButtons extends Component {
         super(props);
 
         this.state = {
-            // state to capture user selected rating - default null, will change to value of rating.rating within looped array when clicked
-
-            // I might not need this
-            is_rating_selected: null,
             // boolean determines if user submits a rating - default F
             is_rating_submitted: false,
             //the index of the currently selected index
             selected_index: undefined,
+            // rating value - rating.rating, but located by the index
+            rating_value: undefined
         }
 
         // bound functions
-
-        // method when user clicks on a rating button
-        // might not need this
-        // this.onSelectChange = this.onSelectChange.bind(this);
-
         // submit method
         this.onSubmitReview = this.onSubmitReview.bind(this);
-
         this.onSelectChangeIndex = this.onSelectChangeIndex.bind(this)
     }
 
+    // helps determine if prev state is same as next state from user update - if not, update to newest state
     componentDidUpdate(prevProps, prevState) {
       console.log('component updated')
       if (prevState.selected_index !== this.state.selected_index) {
@@ -64,14 +57,6 @@ class RatingButtons extends Component {
     }
 
     // methods
-    // onSelectChange(event) {
-    //     console.log(event.target.value); // gets review string value from array, works
-    //     // change of state when clicked
-    //     this.setState({
-    //         // button shows up after user click (value is from prop on each rating button)
-    //         is_rating_selected: event.target.value,
-    //     })
-    // }
 
     // this uses the 2nd parameter within the .map() function
     onSelectChangeIndex(index) {
@@ -81,19 +66,20 @@ class RatingButtons extends Component {
         })
     }
 
-    onSubmitReview(event) {
+    onSubmitReview(event, index) {
         event.preventDefault();
         console.log("do you see me?")
         // change boolean of state is_review_submitted to T
         this.setState({
             // change to true, not ! because only 1 submission needed
-            is_rating_submitted: true
+            is_rating_submitted: true,
+            // rating_value: this.state.index[rating.rating]
         })
     }
 
     // render function
     render() {
-        // map over ratings array to get each rating name
+        // officer_rating variable holds data that is mapped over to render rating elements
         let officer_rating;
         // rating component variable holds rating before user submit
         let rating_component;
@@ -102,7 +88,7 @@ class RatingButtons extends Component {
         // conditional to hold logic for submit - default null
         let conditional = null;
 
-        // map over render
+        // map over ratings array
         officer_rating = (
             <div>
                 {ratings.map((rating,index) => (
@@ -112,9 +98,7 @@ class RatingButtons extends Component {
                             type="radio"
                             key={rating.id.toString()}
                             checked={this.state.selected_index === index}
-                            // {checked={this.state.is_rating_selected === rating.rating}*/}
                             value={rating.rating}
-                            // {/*onChange={this.onSelectChange}*/}
                             // from the index parameter - will track the index from the map function
                             onChange={() => this.onSelectChangeIndex(index)}>
                         </input>
@@ -148,7 +132,6 @@ class RatingButtons extends Component {
 
         // confirmed_submit component
         confirmation_submit = (
-            // <div className="big-container">
                 <div className="confirmation-container">
                     <div className="rating-thankYou">
                         Thank you for your Rating!
@@ -163,7 +146,6 @@ class RatingButtons extends Component {
                         </span>
                     </div>  
                 </div>
-            // </div>
         )
 
         // conditional
@@ -171,7 +153,7 @@ class RatingButtons extends Component {
             <div>{(this.state.is_rating_submitted) ? confirmation_submit : rating_component}</div>
         )
 
-        // this will be the return statement - will have conditional 
+        // return statement - will have conditional 
         return(
             <div>
                 {conditional}    
